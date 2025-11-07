@@ -18,6 +18,27 @@
       line-height: 1.6;
     }
     
+    .promo-banner {
+      background: linear-gradient(135deg, #d6a9a3 0%, #c99990 100%);
+      color: #fff;
+      text-align: center;
+      padding: 0.8rem 1rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      animation: slideDown 0.5s ease;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    
+    .promo-banner span {
+      display: inline-block;
+      margin: 0 1rem;
+    }
+    
     header {
       background: linear-gradient(135deg, #f8e9e4 0%, #fdf1ed 100%);
       text-align: center;
@@ -129,14 +150,51 @@
       margin-bottom: 1.5rem;
     }
     
+    .why-choose {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem auto;
+      max-width: 1000px;
+    }
+    
+    .feature {
+      text-align: center;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(214, 169, 163, 0.2);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .feature h3 {
+      font-family: 'Playfair Display', serif;
+      color: #d6a9a3;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    
+    .feature p {
+      color: #7a6a62;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 3rem;
       margin-top: 3rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
     }
     
     .product-card {
@@ -154,6 +212,25 @@
       box-shadow: 0 15px 40px rgba(214, 169, 163, 0.3);
     }
     
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      z-index: 10;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
     .product-image {
       width: 100%;
       height: 350px;
@@ -169,6 +246,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
     }
     
     .product-info {
@@ -221,6 +303,18 @@
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       position: relative;
+      animation: modalSlideIn 0.3s ease;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     .close-modal {
@@ -337,18 +431,34 @@
     .pack-option {
       padding: 1.2rem 2rem;
       border: 2px solid #c99990;
-      background: #fdf5f3;
+      background: linear-gradient(135deg, #fdf5f3 0%, #fff9f7 100%);
       border-radius: 15px;
       text-align: center;
       transition: all 0.3s ease;
       cursor: pointer;
       min-width: 150px;
+      position: relative;
+    }
+    
+    .pack-option::before {
+      content: '🎁';
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      font-size: 1.5rem;
+      animation: bounce 1s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
     
     .pack-option:hover {
-      background: #d6a9a3;
+      background: linear-gradient(135deg, #d6a9a3 0%, #c99990 100%);
       border-color: #d6a9a3;
       transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(214, 169, 163, 0.3);
     }
     
     .pack-option:hover * {
@@ -360,6 +470,17 @@
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
       color: #5a4a42;
+    }
+    
+    .gift-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
     }
     
     .contact-btn {
@@ -454,11 +575,21 @@
       .products-grid {
         grid-template-columns: 1fr;
       }
+      
+      .promo-banner {
+        font-size: 0.85rem;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="promo-banner">
+    <span>🎁 FREE Surprise Gift with Every Pack!</span>
+    <span>✨ Handmade with Love in Tunisia</span>
+    <span>🚚 Fast Delivery Available</span>
+  </div>
+  
   <header>
     <h1>Zayna Creation</h1>
     <p>Elegance, Softness & Handcrafted with Love</p>
@@ -467,6 +598,7 @@
   <nav>
     <a href="#home">Home</a>
     <a href="#products">Products</a>
+    <a href="#why-us">Why Choose Us</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -478,11 +610,48 @@
     </div>
   </section>
   
+  <section id="why-us">
+    <h2>Why Choose Zayna Creation?</h2>
+    <div class="why-choose">
+      <div class="feature">
+        <div class="feature-icon">❤️</div>
+        <h3>Handmade with Love</h3>
+        <p>Each piece is carefully handcrafted with attention to every detail</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✨</div>
+        <h3>Premium Quality</h3>
+        <p>We use only the finest materials for lasting beauty and durability</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <h3>Unique Designs</h3>
+        <p>Exclusive patterns and styles you won't find anywhere else</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎁</div>
+        <h3>Free Gift Included</h3>
+        <p>Every pack comes with a surprise gift to delight you!</p>
+      </div>
+    </div>
+  </section>
+  
   <section id="products">
     <h2>Our Collection</h2>
     <p>Explore our beautiful range of handmade makeup bags, perfect for every occasion</p>
     
     <div class="products-grid">
+      <div class="product-card" onclick="openModal('fairytale-dream')">
+        <span class="product-badge">✨ NEW</span>
+        <div class="product-image">
+          <img src="https://i.ibb.co/tMf2ssjH/Capture-d-cran-2025-11-07-205134.jpg" alt="Fairytale Dream">
+        </div>
+        <div class="product-info">
+          <h3>Fairytale Dream</h3>
+          <span class="view-details">View Details</span>
+        </div>
+      </div>
+      
       <div class="product-card" onclick="openModal('pink-dream')">
         <div class="product-image">
           <img src="https://i.ibb.co/ZzmDKLp9/Capture-d-cran-2025-10-22-225909.jpg" alt="Pink Dream">
@@ -555,6 +724,52 @@
     </div>
   </section>
   
+  <!-- Modal Fairytale Dream -->
+  <div id="modal-fairytale-dream" class="modal" onclick="closeModalOutside(event, 'fairytale-dream')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close-modal" onclick="closeModal('fairytale-dream')">&times;</span>
+      <div class="modal-images">
+        <div class="modal-image">
+          <img src="https://i.ibb.co/tMf2ssjH/Capture-d-cran-2025-11-07-205134.jpg" alt="Fairytale Dream">
+        </div>
+      </div>
+      <div class="modal-details">
+        <h2>Fairytale Dream</h2>
+        <div class="modal-description">
+          Step into a world of enchantment with our exquisite Fairytale Dream makeup bag. Adorned with delicate white lace and featuring elegant rose details, this luxurious piece evokes the magic of timeless fairy tales. Handcrafted with devotion in a soft nude tone, it's perfect for the woman who believes in the beauty of dreams and the power of elegance. Every detail whispers a story of grace, romance, and artisanal perfection.
+        </div>
+        
+        <div class="sizes-section">
+          <h3>Choose Your Size</h3>
+          <div class="sizes">
+            <div class="size-option">
+              <strong>Small</strong>
+              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">11 TND</span>
+            </div>
+            <div class="size-option">
+              <strong>Medium</strong>
+              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">16 TND</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sizes-section">
+          <h3>Special Pack 🎁</h3>
+          <div class="sizes">
+            <div class="pack-option">
+              <strong>Pack M + S</strong>
+              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">25 TND</span>
+              <br><small style="color: #7a6a62;">Save 2 TND!</small>
+              <span class="gift-badge">🎁 FREE GIFT</span>
+            </div>
+          </div>
+        </div>
+        
+        <a href="#contact" class="contact-btn" onclick="closeModal('fairytale-dream')">Order Now</a>
+      </div>
+    </div>
+  </div>
+  
   <!-- Modal Pink Dream -->
   <div id="modal-pink-dream" class="modal" onclick="closeModalOutside(event, 'pink-dream')">
     <div class="modal-content" onclick="event.stopPropagation()">
@@ -567,7 +782,7 @@
       <div class="modal-details">
         <h2>Pink Dream</h2>
         <div class="modal-description">
-          Discover pure sweetness with our charming Pink Dream makeup bag, featuring a delicate pink gingham pattern. Crafted with love and adorned with a soft satin bow, this piece radiates femininity and tender elegance. Each stitch tells a story of dedication and artisanal passion. Designed for the woman who embraces her gentle strength and celebrates beauty in every detail.
+          Discover pure sweetness with our charming Pink Dream makeup bag, featuring a delicate pink gingham pattern. Crafted with love and adorned with a soft satin bow, this piece radiates femininity and tender elegance.
         </div>
         
         <div class="sizes-section">
@@ -589,404 +804,4 @@
         </div>
         
         <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">18 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">28 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('pink-dream')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal Lilac Glow -->
-  <div id="modal-lilac-glow" class="modal" onclick="closeModalOutside(event, 'lilac-glow')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-modal" onclick="closeModal('lilac-glow')">&times;</span>
-      <div class="modal-images">
-        <div class="modal-image">
-          <img src="https://i.ibb.co/FqzQ1Nxy/Capture-d-cran-2025-10-22-173954.jpg" alt="Lilac Glow">
-        </div>
-      </div>
-      <div class="modal-details">
-        <h2>Lilac Glow</h2>
-        <div class="modal-description">
-          Indulge in the essence of feminine elegance with our exquisite Lilac Glow makeup bag. Adorned with delicate pink and white stripes and finished with a charming satin bow, this handcrafted piece embodies sophistication and grace. Each bag is lovingly crafted to be your perfect beauty companion, blending timeless style with practical luxury.
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Choose Your Size</h3>
-          <div class="sizes">
-            <div class="size-option">
-              <strong>Small</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">10 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Medium</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">12 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Large</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 TND</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">20 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">30 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('lilac-glow')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal Blue Whisper -->
-  <div id="modal-blue-whisper" class="modal" onclick="closeModalOutside(event, 'blue-whisper')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-modal" onclick="closeModal('blue-whisper')">&times;</span>
-      <div class="modal-images">
-        <div class="modal-image">
-          <img src="https://i.ibb.co/600NdbZg/Capture-d-cran-2025-10-22-230127.jpg" alt="Blue Whisper">
-        </div>
-      </div>
-      <div class="modal-details">
-        <h2>Blue Whisper</h2>
-        <div class="modal-description">
-          Experience serene elegance with our enchanting Blue Whisper makeup bag. Featuring a delicate blue gingham pattern and adorned with a soft satin bow, this handcrafted piece embodies tranquility and grace. Each bag is lovingly created to be your perfect companion, blending timeless sophistication with practical beauty. Perfect for the woman who appreciates calm refinement and artisanal quality.
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Choose Your Size</h3>
-          <div class="sizes">
-            <div class="size-option">
-              <strong>Small</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">8 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Medium</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">12 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Large</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 TND</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">18 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">28 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('blue-whisper')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal Flora -->
-  <div id="modal-flora" class="modal" onclick="closeModalOutside(event, 'flora')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-modal" onclick="closeModal('flora')">&times;</span>
-      <div class="modal-images">
-        <div class="modal-image">
-          <img src="https://i.ibb.co/dw6SYzrn/Capture-d-cran-2025-10-22-230526.jpg" alt="Flora">
-        </div>
-      </div>
-      <div class="modal-details">
-        <h2>Flora</h2>
-        <div class="modal-description">
-          Embrace nature's beauty with our exquisite Flora makeup bag. Adorned with delicate floral patterns that celebrate femininity and grace, this handcrafted piece is a true work of art. Each stitch reflects our passion for creating timeless accessories that blend elegance with functionality. Perfect for the woman who finds beauty in life's gentle details and treasures artisanal craftsmanship.
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Choose Your Size</h3>
-          <div class="sizes">
-            <div class="size-option">
-              <strong>Small</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">10 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Medium</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">12 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Large</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 TND</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">20 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">30 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('flora')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal Heart -->
-  <div id="modal-heart" class="modal" onclick="closeModalOutside(event, 'heart')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-modal" onclick="closeModal('heart')">&times;</span>
-      <div class="modal-images">
-        <div class="modal-image">
-          <img src="https://i.ibb.co/6JsHkWnh/Capture-d-cran-2025-10-22-230700.jpg" alt="Heart">
-        </div>
-      </div>
-      <div class="modal-details">
-        <h2>Heart</h2>
-        <div class="modal-description">
-          Fall in love with our enchanting Heart makeup bag, adorned with delicate heart motifs that celebrate romance and feminine charm. Handcrafted with devotion and finished with exquisite attention to detail, this piece is designed for the woman who carries beauty in her heart. Each bag tells a story of love, elegance, and artisanal dedication. A perfect companion for those who appreciate the poetry of everyday beauty.
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Choose Your Size</h3>
-          <div class="sizes">
-            <div class="size-option">
-              <strong>Small</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">10 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Medium</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">12 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Large</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 TND</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">20 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">30 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('heart')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal Lemon -->
-  <div id="modal-lemon" class="modal" onclick="closeModalOutside(event, 'lemon')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-modal" onclick="closeModal('lemon')">&times;</span>
-      <div class="modal-images">
-        <div class="modal-image">
-          <img src="https://i.ibb.co/XfP9ym2Y/Capture-d-cran-2025-10-22-231012.jpg" alt="Lemon">
-        </div>
-      </div>
-      <div class="modal-details">
-        <h2>Lemon</h2>
-        <div class="modal-description">
-          Brighten your day with our refreshing Lemon makeup bag, featuring a cheerful lemon pattern that radiates joy and vitality. Handcrafted with care and finished with delicate details, this piece brings a touch of sunshine to your beauty routine. Perfect for the woman who embraces life with optimism and loves to add a splash of color to her everyday essentials. A delightful blend of playfulness and elegance.
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Choose Your Size</h3>
-          <div class="sizes">
-            <div class="size-option">
-              <strong>Small</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">10 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Medium</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">12 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Large</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 TND</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">20 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">30 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('lemon')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal Sky Dream -->
-  <div id="modal-sky-dream" class="modal" onclick="closeModalOutside(event, 'sky-dream')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-modal" onclick="closeModal('sky-dream')">&times;</span>
-      <div class="modal-images">
-        <div class="modal-image">
-          <img src="https://i.ibb.co/XZ2zdZk6/Capture-d-cran-2025-10-22-231212.jpg" alt="Sky Dream">
-        </div>
-      </div>
-      <div class="modal-details">
-        <h2>Sky Dream</h2>
-        <div class="modal-description">
-          Drift away into serenity with our enchanting Sky Dream makeup bag, featuring a soft sky-blue gingham pattern that evokes the peaceful beauty of a cloudless day. Handcrafted with devotion and adorned with a delicate satin bow, this piece embodies tranquility and feminine grace. Perfect for the woman who finds beauty in simplicity and carries a sense of calm wherever she goes. A dreamy companion for your daily beauty essentials.
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Choose Your Size</h3>
-          <div class="sizes">
-            <div class="size-option">
-              <strong>Small</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">8 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Medium</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">12 TND</span>
-            </div>
-            <div class="size-option">
-              <strong>Large</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 TND</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">18 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">28 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('sky-dream')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <section id="about">
-    <div class="about-section">
-      <h2>About Zayna Creation</h2>
-      <p>
-        Zayna Creation is a Tunisian brand dedicated to crafting elegant, handmade makeup bags that celebrate femininity and sophistication. Each piece is thoughtfully designed and meticulously crafted with love and attention to detail.
-      </p>
-      <p>
-        We believe in the beauty of handcrafted items and the personal touch they bring to everyday essentials. Our makeup bags are more than just accessories – they're expressions of style, quality, and artistic craftsmanship.
-      </p>
-    </div>
-  </section>
-  
-  <section id="contact">
-    <div class="contact-section">
-      <h2>Get in Touch</h2>
-      <p>Follow us on Instagram to discover our latest collections and exclusive designs:</p>
-      <a href="https://www.instagram.com/_zayna_creation_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-link">@zaynacreation</a>
-      <p style="margin-top: 2rem;">For orders and inquiries, send us a direct message on Instagram!</p>
-    </div>
-  </section>
-  
-  <footer>
-    <p>© 2025 Zayna Creation – All Rights Reserved | Handcrafted with Love in Tunisia</p>
-  </footer>
-  
-  <script>
-    function openModal(productId) {
-      const modal = document.getElementById('modal-' + productId);
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(productId) {
-      const modal = document.getElementById('modal-' + productId);
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    function closeModalOutside(event, productId) {
-      if (event.target.classList.contains('modal')) {
-        closeModal(productId);
-      }
-    }
-    
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+          <h3>Special Packs 🎁
