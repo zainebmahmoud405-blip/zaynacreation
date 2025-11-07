@@ -54,6 +54,16 @@
       position: relative;
     }
     
+    .delivery-banner {
+      background: linear-gradient(135deg, #d6a9a3 0%, #c99990 100%);
+      color: white;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    
     nav {
       background-color: #fff;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -134,9 +144,6 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 3rem;
       margin-top: 3rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
     }
     
     .product-card {
@@ -462,8 +469,8 @@
   <header>
     <h1>Zayna Creation</h1>
     <p>Elegance, Softness & Handcrafted with Love</p>
-    <div style="background: linear-gradient(135deg, #d6a9a3 0%, #c99990 100%); color: white; padding: 1rem; margin-top: 1.5rem; border-radius: 15px; font-size: 1.1rem; font-weight: 500;">
-      🎁 Livraison dans toute la Tunisie - Cadeau offert avec chaque pack ! 🎁
+    <div class="delivery-banner">
+      🎁 Delivery throughout Tunisia - Free gift with each pack! 🎁
     </div>
   </header>
   
@@ -472,7 +479,6 @@
     <a href="#products">Products</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
-    <button id="translateBtn" style="background: linear-gradient(135deg, #d6a9a3 0%, #c99990 100%); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 500; cursor: pointer; margin-left: 1rem; transition: all 0.3s ease;">Français</button>
   </nav>
   
   <section id="home">
@@ -487,6 +493,16 @@
     <p>Explore our beautiful range of handmade makeup bags, perfect for every occasion</p>
     
     <div class="products-grid">
+      <div class="product-card" onclick="openModal('fairytail-dream')">
+        <div class="product-image">
+          <img src="https://i.ibb.co/VpVvb0Cv/Capture-d-cran-2025-11-07-205134.jpg" alt="Fairytail Dream">
+        </div>
+        <div class="product-info">
+          <h3>Fairytail Dream</h3>
+          <span class="view-details">View Details</span>
+        </div>
+      </div>
+      
       <div class="product-card" onclick="openModal('pink-dream')">
         <div class="product-image">
           <img src="https://i.ibb.co/ZzmDKLp9/Capture-d-cran-2025-10-22-225909.jpg" alt="Pink Dream">
@@ -556,18 +572,53 @@
           <span class="view-details">View Details</span>
         </div>
       </div>
-      
-      <div class="product-card" onclick="openModal('new-product')">
-        <div class="product-image">
-          <img src="https://i.ibb.co/VpVvb0Cv/Capture-d-cran-2025-11-07-205134.jpg" alt="New Collection">
-        </div>
-        <div class="product-info">
-          <h3>Sunset Collection</h3>
-          <span class="view-details">View Details</span>
-        </div>
-      </div>
     </div>
   </section>
+  
+  <!-- Modal Fairytail Dream -->
+  <div id="modal-fairytail-dream" class="modal" onclick="closeModalOutside(event, 'fairytail-dream')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close-modal" onclick="closeModal('fairytail-dream')">&times;</span>
+      <div class="modal-images">
+        <div class="modal-image">
+          <img src="https://i.ibb.co/VpVvb0Cv/Capture-d-cran-2025-11-07-205134.jpg" alt="Fairytail Dream">
+        </div>
+      </div>
+      <div class="modal-details">
+        <h2>Fairytail Dream</h2>
+        <div class="modal-description">
+          Step into a world of enchantment with our magical Fairytail Dream makeup bag. This exquisite piece captures the essence of fairy tales with its delicate design and elegant craftsmanship. Handcrafted with meticulous attention to detail, each bag is a testament to our commitment to quality and feminine sophistication. Perfect for the modern woman who appreciates artisanal beauty and timeless style, this piece brings a touch of magic to your everyday routine.
+        </div>
+        
+        <div class="sizes-section">
+          <h3>Choose Your Size</h3>
+          <div class="sizes">
+            <div class="size-option">
+              <strong>Small</strong>
+              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">11 TND</span>
+            </div>
+            <div class="size-option">
+              <strong>Medium</strong>
+              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">16 TND</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sizes-section">
+          <h3>Special Pack</h3>
+          <div class="sizes">
+            <div class="pack-option">
+              <strong>Pack S + M</strong>
+              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">25 TND</span>
+              <br><small style="color: #7a6a62;">Save 2 TND!</small>
+            </div>
+          </div>
+        </div>
+        
+        <a href="#contact" class="contact-btn" onclick="closeModal('fairytail-dream')">Order Now</a>
+      </div>
+    </div>
+  </div>
   
   <!-- Modal Pink Dream -->
   <div id="modal-pink-dream" class="modal" onclick="closeModalOutside(event, 'pink-dream')">
@@ -705,38 +756,4 @@
             </div>
             <div class="size-option">
               <strong>Large</strong>
-              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 TND</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="sizes-section">
-          <h3>Special Packs</h3>
-          <div class="sizes">
-            <div class="pack-option">
-              <strong>Pack S + M</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">18 TND</span>
-              <br><small style="color: #7a6a62;">Save 2 TND!</small>
-            </div>
-            <div class="pack-option">
-              <strong>Pack S + M + L</strong>
-              <span style="font-size: 1.4rem; color: #d6a9a3; font-weight: 600;">28 TND</span>
-              <br><small style="color: #7a6a62;">Save 7 TND!</small>
-            </div>
-          </div>
-        </div>
-        
-        <a href="#contact" class="contact-btn" onclick="closeModal('blue-whisper')">Order Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal Flora -->
-  <div id="modal-flora" class="modal" onclick="closeModalOutside(event, 'flora')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-modal" onclick="closeModal('flora')">&times;</span>
-      <div class="modal-images">
-        <div class="modal-image">
-          <img src="https://i.ibb.co/dw6SYzrn/Capture-d-cran-2025-10-22-230526.jpg" alt="Flora">
-        </div>
-      </div>
+              <span style="font-size: 1.3rem; color: #d6a9a3; font-weight: 600;">15 T
